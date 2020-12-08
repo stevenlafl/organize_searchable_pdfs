@@ -10,7 +10,7 @@ export default class EditTodo extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/todos/' + this.props.match.params.id)
+        axios.get('/api/documents/' + this.props.match.params.id)
             .then(response => {
                 // console.log(response.data);
 
@@ -33,7 +33,7 @@ export default class EditTodo extends Component {
             todoPriority: e.target.todoPriority.value,
             todoCompleted: e.target.todoCompleted.checked
         };
-        axios.put('/api/todos/' + this.props.match.params.id, obj)
+        axios.put('/api/documents/' + this.props.match.params.id, obj)
             .then(/*res => console.log(res.data)*/);
 
         this.props.history.push('/');

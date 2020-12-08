@@ -59,13 +59,11 @@ export default class CreateDocument extends Component {
         e.preventDefault();
 
         console.log(`Form submitted:`);
-        console.log(`Letter Title: ${e.target.title.value}`);
         console.log(`Letter Sender: ${e.target.sender.value}`);
         console.log(`Letter Received: ${e.target.received.value}`);
 
         // Get form values first. By the time upload finishes, the form object is gone.
         let newDocument = {
-            'title': e.target.title.value,
             'sender': e.target.sender.value,
             'received': e.target.received.value,
         }
@@ -87,13 +85,6 @@ export default class CreateDocument extends Component {
                 <h3>Create New Todo</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Title: </label>
-                        <input  type="text"
-                            name="title"
-                            className="form-control"
-                        />
-                    </div>
-                    <div className="form-group">
                         <label>Sender: </label>
                         <input  type="text"
                             name="sender"
@@ -102,13 +93,16 @@ export default class CreateDocument extends Component {
                     </div>
                     <div className="form-group">
                         <label>Received: </label>
+                        <br/>
                         <DatePicker
                             name="received"
                             value={ this.state.startDate }
                             onChange={ this.handleChange }
                         />
                     </div>
-                    <input type="file" name="file" onChange={this.onFileChange} />
+                    <div className="form-group">
+                        <input type="file" name="file" onChange={this.onFileChange} />
+                    </div>
                     <div className="form-group">
                         <input type="submit" value="Create Todo" className="btn btn-primary" />
                     </div>

@@ -39,7 +39,6 @@ router.post('/', function(req, res) {
     });
 });
 
-// Returns back the filename inside the upload folder.
 router.get('/:id', function(req, res) {
     const id = req.params.id;
     Document.findById(id, function(err, document) {
@@ -48,9 +47,16 @@ router.get('/:id', function(req, res) {
 });
 
 router.delete('/:id', function (req, res) {
-    Document.findByIdAndRemove(req.params.id, function (err) {
+    Document.findById(req.params.id, function (err, document) {
         if (err) return next(err);
-        res.send('deleted successfully!');
+
+        File.findById(document.file, function(err, file) {
+            
+            fs.unlinkSync(file.path);
+            file.remove();
+            document.remove();
+            res.send('deleted successfully!');
+        });
     })
 });
 

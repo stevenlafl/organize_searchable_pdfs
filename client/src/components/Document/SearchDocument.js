@@ -55,7 +55,7 @@ export default class DocumentList extends Component {
     render() {
         return (
             <div>
-                <h3>Documents List</h3>
+                <h3>Search Results</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>

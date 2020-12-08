@@ -10,6 +10,7 @@ services:
         volumes:
             - ./client:/client
             - /client/node_modules
+            - ./uploads:/uploads
         links:
             - server
         environment:
@@ -43,5 +44,8 @@ services:
             - 1234:1234
         environment:
             - HOST=0.0.0.0
+            - CONN_NAME=mongo
+            - DB_HOST=mongodb
+            - DB_NAME=mongo-docker
 volumes:
     mongodata:

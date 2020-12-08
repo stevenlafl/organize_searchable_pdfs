@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const documentSchema = new Schema({
-    /** The title of the letter */
-    title: {
-        type: String
-    },
     /** The sender's name */
     sender: {
         type: String

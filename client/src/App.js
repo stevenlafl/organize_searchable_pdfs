@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 import CreateDocument from "./components/Document/CreateDocument";
+import SearchDocument from "./components/Document/SearchDocument";
+import ViewDocument from "./components/Document/ViewDocument";
 import EditDocument from "./components/Document/EditDocument";
 import DocumentList from "./components/Document/DocumentList";
 
@@ -31,6 +33,8 @@ class App extends Component {
           </nav>
           <br/>
           <Route path="/" exact component={DocumentList} />
+          <Route path="/search" component={SearchDocument} />
+          <Route path="/view/:id" component={ViewDocument} />
           <Route path="/edit/:id" component={EditDocument} />
           <Route path="/create" component={CreateDocument} />
         </div>
