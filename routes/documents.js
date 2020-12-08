@@ -40,8 +40,7 @@ router.post('/', function(req, res) {
 });
 
 router.get('/:id', function(req, res) {
-    const id = req.params.id;
-    Document.findById(id, function(err, document) {
+    Document.findById(req.params.id, function(err, document) {
         res.json(document);
     });
 });
@@ -65,7 +64,6 @@ router.put('/:id', async function(req, res) {
         if (!document)
             res.status(404).send("data is not found");
         else
-            document.title = req.body.title;
             document.sender = req.body.sender;
             document.received = req.body.received;
             document.file = req.body.file;
@@ -75,6 +73,7 @@ router.put('/:id', async function(req, res) {
                 let dataBuffer = fs.readFileSync(file.path);
 
                 document.text = dataBuffer.text;
+                document.save();
 
                 // document.save().then(document => {
                 //     res.json('Document updated!');

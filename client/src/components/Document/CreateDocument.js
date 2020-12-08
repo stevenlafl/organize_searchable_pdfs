@@ -49,7 +49,7 @@ export default class CreateDocument extends Component {
         
         // Request made to the backend api 
         // Send formData object
-        let res = await axios.post("api/files/upload", formData);
+        let res = await axios.post("api/files", formData);
 
         return res.data;
     };
